@@ -1,17 +1,17 @@
 package br.com.zup.Marketing.model;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "produtos")
 public class Produto {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String nome;
 
-    @OneToMany
-    private Categoria categoria;
+    @ManyToMany
+    private List<Categoria> categoria;
 
     public Produto() {
     }
@@ -24,11 +24,11 @@ public class Produto {
         this.nome = nome;
     }
 
-    public Categoria getCategoria() {
+    public List<Categoria> getCategoria() {
         return categoria;
     }
 
-    public void setCategoria(Categoria categoria) {
+    public void setCategoria(List<Categoria> categoria) {
         this.categoria = categoria;
     }
 }

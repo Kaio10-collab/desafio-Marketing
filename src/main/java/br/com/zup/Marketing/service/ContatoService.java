@@ -1,13 +1,18 @@
 package br.com.zup.Marketing.service;
 
+
 import br.com.zup.Marketing.model.Contato;
 import br.com.zup.Marketing.repository.ContatoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
 public class ContatoService {
+
+    private List<Contato> contatos = new ArrayList<>();
 
     @Autowired
     private ContatoRepository contatoRepository;

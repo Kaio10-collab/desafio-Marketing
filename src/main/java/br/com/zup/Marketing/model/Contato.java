@@ -9,7 +9,6 @@ import java.util.List;
 public class Contato {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String nomeCompleto;
 
     @Email
@@ -21,7 +20,7 @@ public class Contato {
     private List<Produto> produto;
 
     @OneToMany
-    private Categoria categoria;
+    private List<Categoria> categoria;
 
     public Contato() {
     }
@@ -58,11 +57,11 @@ public class Contato {
         this.produto = produto;
     }
 
-    public Categoria getCategoria() {
+    public List<Categoria> getCategoria() {
         return categoria;
     }
 
-    public void setCategoria(Categoria categoria) {
+    public void setCategoria(List<Categoria> categoria) {
         this.categoria = categoria;
     }
 }
