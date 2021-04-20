@@ -1,6 +1,7 @@
 package br.com.zup.Marketing.controller;
 
 import br.com.zup.Marketing.model.Contato;
+import br.com.zup.Marketing.service.ContatoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -36,8 +37,8 @@ public class ContatoController {
     }
 
     @DeleteMapping("{nome}/")
-    public void deletarContato(@PathVariable String nome){
-        return contatoService.deletarUmContato(nome);
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deletarContato(@PathVariable String nome ){
+        contatoService.deletarUmContato(nome);
     }
-
 }
