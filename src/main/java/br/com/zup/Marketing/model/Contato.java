@@ -2,6 +2,7 @@ package br.com.zup.Marketing.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
+import java.util.List;
 
 @Entity
 @Table(name = "contatos")
@@ -16,8 +17,8 @@ public class Contato {
 
     private double telefone;
 
-    @OneToMany
-    private Produto produto;
+    @ManyToMany
+    private List<Produto> produto;
 
     @OneToMany
     private Categoria categoria;
@@ -49,11 +50,11 @@ public class Contato {
         this.telefone = telefone;
     }
 
-    public Produto getProduto() {
+    public List<Produto> getProduto() {
         return produto;
     }
 
-    public void setProduto(Produto produto) {
+    public void setProduto(List<Produto> produto) {
         this.produto = produto;
     }
 

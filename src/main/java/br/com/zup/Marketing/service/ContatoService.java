@@ -4,7 +4,6 @@ import br.com.zup.Marketing.model.Contato;
 import br.com.zup.Marketing.repository.ContatoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.Optional;
 
 @Service
