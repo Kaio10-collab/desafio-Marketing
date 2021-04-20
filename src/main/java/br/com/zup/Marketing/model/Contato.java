@@ -19,6 +19,9 @@ public class Contato {
     @OneToMany
     private Produto produto;
 
+    @OneToMany
+    private Categoria categoria;
+
     public Contato() {
     }
 
@@ -52,5 +55,13 @@ public class Contato {
 
     public void setProduto(Produto produto) {
         this.produto = produto;
+    }
+
+    public Categoria getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
     }
 }
