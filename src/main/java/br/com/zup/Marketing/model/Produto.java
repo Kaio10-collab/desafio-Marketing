@@ -8,6 +8,9 @@ import java.util.List;
 public class Produto {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+
     private String nome;
 
     @ManyToMany
@@ -30,5 +33,13 @@ public class Produto {
 
     public void setCategoria(List<Categoria> categoria) {
         this.categoria = categoria;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 }

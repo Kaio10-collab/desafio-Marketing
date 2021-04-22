@@ -9,11 +9,11 @@ import java.util.List;
 public class Contato {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+
     private String nomeCompleto;
-
-    @Email
     private String email;
-
     private double telefone;
 
     @ManyToMany
@@ -63,5 +63,13 @@ public class Contato {
 
     public void setCategoria(List<Categoria> categoria) {
         this.categoria = categoria;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 }
