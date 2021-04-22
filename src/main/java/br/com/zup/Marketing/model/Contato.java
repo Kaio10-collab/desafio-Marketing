@@ -17,10 +17,7 @@ public class Contato {
     private double telefone;
 
     @ManyToMany
-    private List<Produto> produto;
-
-    @OneToMany
-    private List<Categoria> categoria;
+    private List<Produto> produtos; // sempre no plural a lista.
 
     public Contato() {
     }
@@ -50,19 +47,11 @@ public class Contato {
     }
 
     public List<Produto> getProduto() {
-        return produto;
+        return produtos;
     }
 
     public void setProduto(List<Produto> produto) {
-        this.produto = produto;
-    }
-
-    public List<Categoria> getCategoria() {
-        return categoria;
-    }
-
-    public void setCategoria(List<Categoria> categoria) {
-        this.categoria = categoria;
+        this.produtos = produto;
     }
 
     public Integer getId() {

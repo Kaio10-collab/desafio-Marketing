@@ -65,15 +65,6 @@ public class ContatoDTO {
         this.categorias = categorias;
     }
 
-    public Contato converterDTOParaModel(){
-        Contato contato = new Contato();
-        contato.setNomeCompleto(this.nomeCompleto);
-        contato.setEmail(this.email);
-        contato.setTelefone(this.telefone);
-        contato.setProduto(this.produtos);
-        contato.setCategoria(this.categorias);
-        return contato;
-    }
 
     public static Iterable<ContatoDTO> converterIterableDeModelParaDTO(Iterable<Contato> contatos){
         List<ContatoDTO> contatosDTOS = new ArrayList<>();
@@ -90,7 +81,6 @@ public class ContatoDTO {
         contatoDTO.setEmail(contato.getEmail());
         contatoDTO.setTelefone(contato.getTelefone());
         contatoDTO.setProdutos(contato.getProduto());
-        contatoDTO.setCategorias(contato.getCategoria());
         return contatoDTO;
     }
 }

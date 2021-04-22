@@ -5,14 +5,11 @@ import br.com.zup.Marketing.model.Contato;
 import br.com.zup.Marketing.repository.ContatoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import java.util.ArrayList;
-import java.util.List;
+
 import java.util.Optional;
 
 @Service
 public class ContatoService {
-
-    private List<Contato> contatos = new ArrayList<>();
 
     @Autowired
     private ContatoRepository contatoRepository;
@@ -53,13 +50,13 @@ public class ContatoService {
         if (contatoDTO.getProduto() == null) {
             return contatoRepository.findAll();
         }
-        return contatoRepository.findByProdutoNome(contatoDTO.getProduto().getNome());
+        return contatoRepository.findByProdutosNome(contatoDTO.getProduto().getNome());
     }
 
     public Iterable<Contato> pesquisarOsContatosPelaCategoria(String categoria, FiltroContatoDTO contatoDTO) {
         if (contatoDTO.getCategoria() == null) {
             return contatoRepository.findAll();
         }
-        return contatoRepository.findByProdutoNome(contatoDTO.getCategoria().getNome());
+        return contatoRepository.findByProdutosCategoriasNome(contatoDTO.getCategoria().getNome());
     }
 }
