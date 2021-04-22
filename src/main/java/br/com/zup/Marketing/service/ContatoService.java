@@ -1,6 +1,8 @@
 package br.com.zup.Marketing.service;
 
 
+import br.com.zup.Marketing.DTOs.ContatoDTO;
+import br.com.zup.Marketing.DTOs.FiltroContatoDTO;
 import br.com.zup.Marketing.model.Contato;
 import br.com.zup.Marketing.repository.ContatoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,5 +49,12 @@ public class ContatoService {
 
     public void deletarUmContato(Integer id){
         contatoRepository.deleteById(id);
+    }
+
+    public Iterable<Contato> pesquisarOsContatosPeloProduto(FiltroContatoDTO contatoDTO) {
+        if (contatoDTO.getProduto() == null) {
+            return contatoRepository.findAll();
+        }
+        return contatoRepository.findByProdutoNome(contatoDTO.getProduto().getNome());
     }
 }
