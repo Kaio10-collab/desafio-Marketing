@@ -1,9 +1,11 @@
 package br.com.zup.Marketing.DTOs;
 
+import br.com.zup.Marketing.model.Categoria;
 import br.com.zup.Marketing.model.Contato;
 import br.com.zup.Marketing.model.Produto;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 public class ContatoDTO {
@@ -15,7 +17,9 @@ public class ContatoDTO {
     @NotBlank
     private double telefone;
 
-    private List<Produto> produto;
+    @NotNull
+    private List<Produto> produtos;
+    private List<Categoria> categorias;
 
     public ContatoDTO() {
     }
@@ -44,12 +48,20 @@ public class ContatoDTO {
         this.telefone = telefone;
     }
 
-    public List<Produto> getProduto() {
-        return produto;
+    public List<Produto> getProdutos() {
+        return produtos;
     }
 
-    public void setProduto(List<Produto> produto) {
-        this.produto = produto;
+    public void setProdutos(List<Produto> produtos) {
+        this.produtos = produtos;
+    }
+
+    public List<Categoria> getCategorias() {
+        return categorias;
+    }
+
+    public void setCategorias(List<Categoria> categorias) {
+        this.categorias = categorias;
     }
 
     public Contato converterDTOParaModel(){
@@ -57,7 +69,8 @@ public class ContatoDTO {
         contato.setNomeCompleto(this.nomeCompleto);
         contato.setEmail(this.email);
         contato.setTelefone(this.telefone);
-        contato.setProduto(this.produto);
+        contato.setProduto(this.produtos);
+        contato.setCategoria(this.categorias);
         return contato;
     }
 }
