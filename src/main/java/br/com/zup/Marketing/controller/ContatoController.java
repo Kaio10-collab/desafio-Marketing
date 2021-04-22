@@ -1,5 +1,7 @@
 package br.com.zup.Marketing.controller;
 
+import br.com.zup.Marketing.DTOs.ContatoDTO;
+import br.com.zup.Marketing.DTOs.FiltroContatoDTO;
 import br.com.zup.Marketing.model.Contato;
 import br.com.zup.Marketing.service.ContatoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,5 +42,11 @@ public class ContatoController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deletarContato(@PathVariable Integer id ){
         contatoService.deletarUmContato(id);
+    }
+
+    @GetMapping("{produto}/")
+    public Iterable<ContatoDTO> pesquisarTodosOsContatosDeUmProduto(@ModelAttribute FiltroContatoDTO filtro) {
+        Iterable<Contato> objcontato = contatoService.pesquisarOsContatosPeloProduto(filtro);
+        return ContatoDTO.converterIterableDeModelParaDTO(objcontato);
     }
 }

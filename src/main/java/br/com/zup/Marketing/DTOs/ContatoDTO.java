@@ -6,6 +6,7 @@ import br.com.zup.Marketing.model.Produto;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ContatoDTO {
@@ -72,5 +73,24 @@ public class ContatoDTO {
         contato.setProduto(this.produtos);
         contato.setCategoria(this.categorias);
         return contato;
+    }
+
+    public static Iterable<ContatoDTO> converterIterableDeModelParaDTO(Iterable<Contato> contatos){
+        List<ContatoDTO> contatosDTOS = new ArrayList<>();
+        for(Contato contato: contatos){
+            contatosDTOS.add(converterModelParaDTO(contato));
+        }
+        return contatosDTOS;
+    }
+
+    public static ContatoDTO converterModelParaDTO(Contato contato){
+        ContatoDTO contatoDTO = new ContatoDTO();
+
+        contatoDTO.setNomeCompleto(contato.getNomeCompleto());
+        contatoDTO.setEmail(contato.getEmail());
+        contatoDTO.setTelefone(contato.getTelefone());
+        contatoDTO.setProdutos(contato.getProduto());
+        contatoDTO.setCategorias(contato.getCategoria());
+        return contatoDTO;
     }
 }
