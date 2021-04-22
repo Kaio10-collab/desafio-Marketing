@@ -19,10 +19,10 @@ public class ContatoController {
         return contatoService.cadastrarUmContato(contato);
     }
 
-    @GetMapping("{nome}/")
+    @GetMapping("{id}/")
     @ResponseStatus(HttpStatus.OK)
-    public Contato pesquisaContato(@PathVariable String nome){
-        return contatoService.pesquisarUmContatoPeloNome(nome);
+    public Contato pesquisaContato(@PathVariable Integer id){
+        return contatoService.pesquisarUmContatoPeloId(id);
     }
 
     @GetMapping
@@ -30,15 +30,15 @@ public class ContatoController {
         return contatoService.pesquisarTodosOsContatos();
     }
 
-    @PutMapping("{nome}/")
-    public Contato atualizandoUmContato(@PathVariable String nome, @RequestBody Contato contato){
-        Contato objContato = contatoService.atualizaUmContato(nome, contato);
+    @PutMapping("{id}/")
+    public Contato atualizandoUmContato(@PathVariable Integer id, @RequestBody Contato contato){
+        Contato objContato = contatoService.atualizaUmContato(id, contato);
         return objContato;
     }
 
-    @DeleteMapping("{nome}/")
+    @DeleteMapping("{id}/")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deletarContato(@PathVariable String nome ){
-        contatoService.deletarUmContato(nome);
+    public void deletarContato(@PathVariable Integer id ){
+        contatoService.deletarUmContato(id);
     }
 }

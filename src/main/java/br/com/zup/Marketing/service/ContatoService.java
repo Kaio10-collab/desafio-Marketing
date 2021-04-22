@@ -21,8 +21,8 @@ public class ContatoService {
         return contatoRepository.save(contato);
     }
 
-    public Contato pesquisarUmContatoPeloNome(String nome){
-        Optional<Contato> contatoOptional = contatoRepository.findById(nome);
+    public Contato pesquisarUmContatoPeloId(Integer id){
+        Optional<Contato> contatoOptional = contatoRepository.findById(id);
 
         if (contatoOptional.isPresent()){
             return contatoOptional.get();
@@ -34,18 +34,18 @@ public class ContatoService {
         return contatoRepository.findAll();
     }
 
-    public Contato atualizaUmContato(String nome, Contato contato){
-        Optional<Contato> contatoOptional = contatoRepository.findById(nome);
+    public Contato atualizaUmContato(Integer id, Contato contato){
+        Optional<Contato> contatoOptional = contatoRepository.findById(id);
 
         if (!contatoOptional.isPresent())
             throw new RuntimeException("Contato não foi encontrado para atualização");
 
-        contato.setNomeCompleto(nome);
+        contato.setId(id);
         contatoRepository.save(contato);
         return contato;
     }
 
-    public void deletarUmContato(String nome){
-        contatoRepository.deleteById(nome);
+    public void deletarUmContato(Integer id){
+        contatoRepository.deleteById(id);
     }
 }
