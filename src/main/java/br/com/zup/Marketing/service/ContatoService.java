@@ -1,7 +1,5 @@
 package br.com.zup.Marketing.service;
 
-
-import br.com.zup.Marketing.DTOs.ContatoDTO;
 import br.com.zup.Marketing.DTOs.FiltroContatoDTO;
 import br.com.zup.Marketing.model.Contato;
 import br.com.zup.Marketing.repository.ContatoRepository;
@@ -51,10 +49,17 @@ public class ContatoService {
         contatoRepository.deleteById(id);
     }
 
-    public Iterable<Contato> pesquisarOsContatosPeloProduto(FiltroContatoDTO contatoDTO) {
+    public Iterable<Contato> pesquisarOsContatosPeloProduto(String produto, FiltroContatoDTO contatoDTO) {
         if (contatoDTO.getProduto() == null) {
             return contatoRepository.findAll();
         }
         return contatoRepository.findByProdutoNome(contatoDTO.getProduto().getNome());
+    }
+
+    public Iterable<Contato> pesquisarOsContatosPelaCategoria(String categoria, FiltroContatoDTO contatoDTO) {
+        if (contatoDTO.getCategoria() == null) {
+            return contatoRepository.findAll();
+        }
+        return contatoRepository.findByProdutoNome(contatoDTO.getCategoria().getNome());
     }
 }

@@ -17,36 +17,44 @@ public class ContatoController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Contato cadastroContato(@RequestBody Contato contato){
+    public Contato cadastroContato(@RequestBody Contato contato) {
         return contatoService.cadastrarUmContato(contato);
     }
 
     @GetMapping("{id}/")
     @ResponseStatus(HttpStatus.OK)
-    public Contato pesquisaContato(@PathVariable Integer id){
+    public Contato pesquisaContato(@PathVariable Integer id) {
         return contatoService.pesquisarUmContatoPeloId(id);
     }
 
     @GetMapping
-    public Iterable<Contato> retornoDeTodosOsContatos(){
+    public Iterable<Contato> retornoDeTodosOsContatos() {
         return contatoService.pesquisarTodosOsContatos();
     }
 
     @PutMapping("{id}/")
-    public Contato atualizandoUmContato(@PathVariable Integer id, @RequestBody Contato contato){
+    public Contato atualizandoUmContato(@PathVariable Integer id, @RequestBody Contato contato) {
         Contato objContato = contatoService.atualizaUmContato(id, contato);
         return objContato;
     }
 
     @DeleteMapping("{id}/")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deletarContato(@PathVariable Integer id ){
+    public void deletarContato(@PathVariable Integer id) {
         contatoService.deletarUmContato(id);
     }
 
     @GetMapping("{produto}/")
-    public Iterable<ContatoDTO> pesquisarTodosOsContatosDeUmProduto(@ModelAttribute FiltroContatoDTO filtro) {
-        Iterable<Contato> objcontato = contatoService.pesquisarOsContatosPeloProduto(filtro);
+    public Iterable<ContatoDTO> pesquisarTodosOsContatosDeUmProduto(@PathVariable String produto,
+                                                                    @ModelAttribute FiltroContatoDTO filtro) {
+        Iterable<Contato> objcontato = contatoService.pesquisarOsContatosPeloProduto(produto, filtro);
+        return ContatoDTO.converterIterableDeModelParaDTO(objcontato);
+    }
+
+    @GetMapping("{categoria}/")
+    public Iterable<ContatoDTO> pesquisarTodosOsContatosPelaCategoria(@PathVariable String categoria,
+                                                                    @ModelAttribute FiltroContatoDTO filtro) {
+        Iterable<Contato> objcontato = contatoService.pesquisarOsContatosPelaCategoria(categoria, filtro);
         return ContatoDTO.converterIterableDeModelParaDTO(objcontato);
     }
 }
