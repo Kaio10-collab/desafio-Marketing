@@ -1,7 +1,6 @@
 package br.com.zup.Marketing.DTOs;
 
 import br.com.zup.Marketing.model.Contato;
-
 import javax.validation.constraints.NotBlank;
 
 public class ContatoDTO {
