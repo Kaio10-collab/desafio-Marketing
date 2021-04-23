@@ -15,7 +15,6 @@ public class Contato {
 
     private String nomeCompleto;
     private String email;
-    @Max(8)
     private String telefone;
 
     @ManyToMany

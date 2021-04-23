@@ -4,6 +4,8 @@ import br.com.zup.Marketing.model.Categoria;
 import br.com.zup.Marketing.model.Contato;
 import br.com.zup.Marketing.model.Produto;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.Max;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
@@ -11,11 +13,14 @@ import java.util.List;
 
 public class ContatoDTO {
 
-    @NotBlank
+    @NotBlank(message = "{validacao.nome_obrigatorio}")
     private String nomeCompleto;
-    @NotBlank
+
+    @Email(message = "{validacao.email_invalido}")
     private String email;
-    @NotBlank
+
+    @NotBlank(message = "{validacao.telefone_obrigatorio}")
+    @Max(8)
     private String telefone;
 
     @NotNull
