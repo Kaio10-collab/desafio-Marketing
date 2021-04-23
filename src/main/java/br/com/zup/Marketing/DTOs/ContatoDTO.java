@@ -16,7 +16,7 @@ public class ContatoDTO {
     @NotBlank
     private String email;
     @NotBlank
-    private double telefone;
+    private String telefone;
 
     @NotNull
     private List<Produto> produtos;
@@ -41,11 +41,11 @@ public class ContatoDTO {
         this.email = email;
     }
 
-    public double getTelefone() {
+    public String getTelefone() {
         return telefone;
     }
 
-    public void setTelefone(double telefone) {
+    public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
 

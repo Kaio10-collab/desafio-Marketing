@@ -2,6 +2,7 @@ package br.com.zup.Marketing.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
+import javax.validation.constraints.Max;
 import java.util.List;
 
 @Entity
@@ -14,7 +15,8 @@ public class Contato {
 
     private String nomeCompleto;
     private String email;
-    private double telefone;
+    @Max(8)
+    private String telefone;
 
     @ManyToMany
     private List<Produto> produtos; // sempre no plural a lista.
@@ -38,11 +40,11 @@ public class Contato {
         this.email = email;
     }
 
-    public double getTelefone() {
+    public String getTelefone() {
         return telefone;
     }
 
-    public void setTelefone(double telefone) {
+    public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
 
