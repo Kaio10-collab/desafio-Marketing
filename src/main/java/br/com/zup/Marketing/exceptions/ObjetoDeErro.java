@@ -12,6 +12,10 @@ public class ObjetoDeErro {
         this.motivo = motivo;
     }
 
+    public ObjetoDeErro(String message) {
+
+    }
+
     public Integer getStatus() {
         return status;
     }
