@@ -1,6 +1,7 @@
 package br.com.zup.Marketing.service;
 
 import br.com.zup.Marketing.DTOs.FiltroContatoDTO;
+import br.com.zup.Marketing.model.Categoria;
 import br.com.zup.Marketing.model.Contato;
 import br.com.zup.Marketing.model.Produto;
 import br.com.zup.Marketing.repository.ContatoRepository;
@@ -21,6 +22,9 @@ public class ContatoService {
 
     @Autowired
     private ProdutoService produtoService;
+
+    @Autowired
+    private CategoriaService categoriaService;
 
 
     public Contato cadastrarUmContato(Contato contato){
@@ -73,11 +77,21 @@ public class ContatoService {
 
     private List<Produto> listarOsProdutos(List<Produto> produtos){
 
-            List<Produto> produtosAdcionarContato = new ArrayList<>();
+            List<Produto> produtosAdicionarContato = new ArrayList<>();
 
             for (Produto produto : produtos) {
-                produtosAdcionarContato.add(produtoService.procurarProdutoPorNome(produto).get());
+                produtosAdicionarContato.add(produtoService.procurarProdutoPorNome(produto).get());
             }
-            return produtosAdcionarContato;
+            return produtosAdicionarContato;
+    }
+
+    private List<Categoria> listarAsCategorias(List<Categoria> categorias){
+
+        List<Categoria> categoriasAdicionarContato = new ArrayList<>();
+
+        for (Categoria categoria : categorias) {
+            categoriasAdicionarContato.add(categoriaService.procurarCategoriaPorNome(categoria).get());
+        }
+        return categoriasAdicionarContato;
     }
 }

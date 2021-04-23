@@ -5,6 +5,9 @@ import br.com.zup.Marketing.repository.CategoriaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Optional;
+
 @Service
 public class CategoriaService {
 
@@ -17,5 +20,9 @@ public class CategoriaService {
 
     public void deletarCategoria(Integer id){
         categoriaRepository.deleteById(id);
+    }
+
+    public Optional<Categoria> procurarCategoriaPorNome(Categoria categoria) {
+        return categoriaRepository.findById(categoria.getId());
     }
 }
