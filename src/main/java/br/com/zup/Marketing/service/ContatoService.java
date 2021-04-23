@@ -23,10 +23,6 @@ public class ContatoService {
     @Autowired
     private ProdutoService produtoService;
 
-    @Autowired
-    private CategoriaService categoriaService;
-
-
     public Contato cadastrarUmContato(Contato contato){
         Contato objContato = contatoRepository.save(contato);
         objContato.setProduto(listarOsProdutos(objContato.getProduto()));
@@ -83,15 +79,5 @@ public class ContatoService {
                 produtosAdicionarContato.add(produtoService.procurarProdutoPorNome(produto).get());
             }
             return produtosAdicionarContato;
-    }
-
-    private List<Categoria> listarAsCategorias(List<Categoria> categorias){
-
-        List<Categoria> categoriasAdicionarContato = new ArrayList<>();
-
-        for (Categoria categoria : categorias) {
-            categoriasAdicionarContato.add(categoriaService.procurarCategoriaPorNome(categoria).get());
-        }
-        return categoriasAdicionarContato;
     }
 }
