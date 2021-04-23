@@ -1,7 +1,6 @@
 package br.com.zup.Marketing.exceptions;
 
 public class ErroCustomizado extends RuntimeException{
-
     private int statusCode;
 
     public ErroCustomizado(String message) {
