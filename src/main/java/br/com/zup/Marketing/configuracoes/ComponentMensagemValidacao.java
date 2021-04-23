@@ -6,10 +6,15 @@ import org.springframework.context.support.ReloadableResourceBundleMessageSource
 import org.springframework.stereotype.Component;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 
-@Component
+@Component // vai transformar a classe em um objeto e vai instaciar com os métodos do Bean.
+// INSTANCIA UM OBJETO Da classe marcada que o spring boot vai gerenciar (bean).
 public class ComponentMensagemValidacao {
 
-    @Bean
+    /**
+     * Os dois no final fazem o mesmo. Só que o Component é para a Classe toda,
+     * e o Bean é para apenas o retorno do Metodo
+     */
+    @Bean// pega o objeto retorno de um metodo e entrega para o spring instanciar (bean)
     public MessageSource ferramentaDeMensagens() {
         ReloadableResourceBundleMessageSource messageSource
                 = new ReloadableResourceBundleMessageSource();
