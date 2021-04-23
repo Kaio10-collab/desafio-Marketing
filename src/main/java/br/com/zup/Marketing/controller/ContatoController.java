@@ -45,7 +45,7 @@ public class ContatoController {
         contatoService.deletarUmContato(id);
     }
 
-   @GetMapping("produto/{produto}")//falta arrumar o caminho da url.
+   @GetMapping("produto/{produto}")
     @ResponseStatus(HttpStatus.OK)
     public Iterable<ContatoDTO> pesquisarTodosOsContatosDeUmProduto(@PathVariable String produto,
                                                                     @ModelAttribute FiltroContatoDTO filtro) {
@@ -53,7 +53,7 @@ public class ContatoController {
         return ContatoDTO.converterIterableDeModelParaDTO(objcontato);
     }
 
-    @GetMapping("categoria/{categoria}")//falta arrumar o caminho da url.
+    @GetMapping("categoria/{categoria}")
     @ResponseStatus(HttpStatus.OK)
     public Iterable<ContatoDTO> pesquisarTodosOsContatosPelaCategoria(@PathVariable String categoria,
                                                                     @ModelAttribute FiltroContatoDTO filtro) {

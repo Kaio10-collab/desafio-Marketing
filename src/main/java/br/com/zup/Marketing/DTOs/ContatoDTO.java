@@ -1,9 +1,7 @@
 package br.com.zup.Marketing.DTOs;
 
-import br.com.zup.Marketing.model.Categoria;
 import br.com.zup.Marketing.model.Contato;
 import br.com.zup.Marketing.model.Produto;
-
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.NotBlank;
@@ -25,7 +23,7 @@ public class ContatoDTO {
 
     @NotNull
     private List<Produto> produtos;
-    private List<Categoria> categorias;
+
 
     public ContatoDTO() {
     }
@@ -61,15 +59,6 @@ public class ContatoDTO {
     public void setProdutos(List<Produto> produtos) {
         this.produtos = produtos;
     }
-
-    public List<Categoria> getCategorias() {
-        return categorias;
-    }
-
-    public void setCategorias(List<Categoria> categorias) {
-        this.categorias = categorias;
-    }
-
 
     public static Iterable<ContatoDTO> converterIterableDeModelParaDTO(Iterable<Contato> contatos){
         List<ContatoDTO> contatosDTOS = new ArrayList<>();

@@ -2,10 +2,15 @@ package br.com.zup.Marketing.service;
 
 import br.com.zup.Marketing.DTOs.FiltroContatoDTO;
 import br.com.zup.Marketing.model.Contato;
+import br.com.zup.Marketing.model.Produto;
 import br.com.zup.Marketing.repository.ContatoRepository;
+import br.com.zup.Marketing.repository.ProdutoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -14,8 +19,14 @@ public class ContatoService {
     @Autowired
     private ContatoRepository contatoRepository;
 
+    @Autowired
+    private ProdutoService produtoService;
+
+
     public Contato cadastrarUmContato(Contato contato){
-        return contatoRepository.save(contato);
+        Contato objContato = contatoRepository.save(contato);
+        objContato.setProduto(listarOsProdutos(objContato.getProduto()));
+        return objContato;
     }
 
     public Contato pesquisarUmContatoPeloId(Integer id){
@@ -50,13 +61,23 @@ public class ContatoService {
         if (contatoDTO.getProduto() == null) {
             return contatoRepository.findAll();
         }
-        return contatoRepository.findByProdutosNome(contatoDTO.getProduto().getNome());
+        return contatoRepository.findByProdutosNome(produto);
     }
 
     public Iterable<Contato> pesquisarOsContatosPelaCategoria(String categoria, FiltroContatoDTO contatoDTO) {
         if (contatoDTO.getCategoria() == null) {
             return contatoRepository.findAll();
         }
-        return contatoRepository.findByProdutosCategoriasNome(contatoDTO.getCategoria().getNome());
+        return contatoRepository.findByProdutosCategoriasNome(categoria);
+    }
+
+    private List<Produto> listarOsProdutos(List<Produto> produtos){
+
+            List<Produto> produtosAdcionarContato = new ArrayList<>();
+
+            for (Produto produto : produtos) {
+                produtosAdcionarContato.add(produtoService.procurarProdutoPorNome(produto).get());
+            }
+            return produtosAdcionarContato;
     }
 }

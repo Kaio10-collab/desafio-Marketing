@@ -5,6 +5,8 @@ import br.com.zup.Marketing.repository.ProdutoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class ProdutoService {
 
@@ -18,4 +20,9 @@ public class ProdutoService {
     public void deletarProduto(Integer id){
         produtoRepository.deleteById(id);
     }
+
+    public Optional<Produto> procurarProdutoPorNome(Produto produto) {
+        return produtoRepository.findById(produto.getId());
+    }
+
 }
