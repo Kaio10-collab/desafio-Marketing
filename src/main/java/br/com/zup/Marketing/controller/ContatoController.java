@@ -53,7 +53,7 @@ public class ContatoController {
         return ContatoDTO.converterIterableDeModelParaDTO(objcontato);
     }
 
-    @GetMapping("produto/{categoria}")//falta arrumar o caminho da url.
+    @GetMapping("categoria/{categoria}")//falta arrumar o caminho da url.
     @ResponseStatus(HttpStatus.OK)
     public Iterable<ContatoDTO> pesquisarTodosOsContatosPelaCategoria(@PathVariable String categoria,
                                                                     @ModelAttribute FiltroContatoDTO filtro) {
