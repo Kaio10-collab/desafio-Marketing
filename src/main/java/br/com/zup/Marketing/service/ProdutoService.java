@@ -21,9 +21,8 @@ public class ProdutoService {
     private CategoriaService categoriaService;
 
     public Produto cadastrarProduto(Produto produto) {
-        Produto objContato = produtoRepository.save(produto);
-        objContato.setCategoria(listarAsCategorias(objContato.getCategoria()));
-        return objContato;
+        produto.setCategorias(listarAsCategorias(produto.getCategorias()));
+        return produtoRepository.save(produto);
     }
 
     public void deletarProduto(Integer id){
@@ -39,7 +38,7 @@ public class ProdutoService {
         List<Categoria> categoriasAdicionarContato = new ArrayList<>();
 
         for (Categoria categoria : categorias) {
-            categoriasAdicionarContato.add(categoriaService.procurarCategoriaPorNome(categoria).get());
+            categoriasAdicionarContato.add(categoriaService.procurarCategoriaPorNome(categoria));
         }
         return categoriasAdicionarContato;
     }

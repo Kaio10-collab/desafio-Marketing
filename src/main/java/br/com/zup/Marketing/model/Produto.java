@@ -27,12 +27,12 @@ public class Produto {
         this.nome = nome;
     }
 
-    public List<Categoria> getCategoria() {
+    public List<Categoria> getCategorias() {
         return categorias;
     }
 
-    public void setCategoria(List<Categoria> categoria) {
-        this.categorias = categoria;
+    public void setCategorias(List<Categoria> categorias) {
+        this.categorias = categorias;
     }
 
     public Integer getId() {
