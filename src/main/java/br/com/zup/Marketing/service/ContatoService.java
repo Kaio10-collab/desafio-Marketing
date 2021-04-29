@@ -25,7 +25,7 @@ public class ContatoService {
 
     public Contato cadastrarUmContato(Contato contato){
         Contato objContato = contatoRepository.save(contato);
-        objContato.setProduto(listarOsProdutos(objContato.getProduto()));
+        objContato.setProdutos(listarOsProdutos(objContato.getProdutos()));
         return objContato;
     }
 

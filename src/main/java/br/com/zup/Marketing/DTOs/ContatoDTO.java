@@ -73,7 +73,7 @@ public class ContatoDTO {
         contatoDTO.setNomeCompleto(contato.getNomeCompleto());
         contatoDTO.setEmail(contato.getEmail());
         contatoDTO.setTelefone(contato.getTelefone());
-        contatoDTO.setProdutos(contato.getProduto());
+        contatoDTO.setProdutos(contato.getProdutos());
         return contatoDTO;
     }
 }

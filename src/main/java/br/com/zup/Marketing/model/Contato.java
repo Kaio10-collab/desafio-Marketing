@@ -16,6 +16,8 @@ public class Contato {
     private String nomeCompleto;
     private String email;
     private String telefone;
+    private String senha;
+    private String cpf;
 
     @ManyToMany
     private List<Produto> produtos; // sempre no plural a lista.
@@ -47,11 +49,11 @@ public class Contato {
         this.telefone = telefone;
     }
 
-    public List<Produto> getProduto() {
+    public List<Produto> getProdutos() {
         return produtos;
     }
 
-    public void setProduto(List<Produto> produto) {
+    public void setProdutos(List<Produto> produto) {
         this.produtos = produto;
     }
 
@@ -61,5 +63,22 @@ public class Contato {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+
     }
 }
