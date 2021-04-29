@@ -15,9 +15,6 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 public class ConfiguracaoDeSeguranca extends WebSecurityConfigurerAdapter {
 
     private static final String[] PUBLIC_MATCHERS_GET = {
-            "/categorias/**",
-            "/contatos/**",
-            "/produtos/**"
     };
 
     private static final String[] PUBLIC_MATCHERS_POST = {

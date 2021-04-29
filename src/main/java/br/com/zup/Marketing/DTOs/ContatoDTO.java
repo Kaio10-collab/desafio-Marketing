@@ -24,7 +24,6 @@ public class ContatoDTO {
     @NotNull
     private List<Produto> produtos;
 
-
     public ContatoDTO() {
     }
 
